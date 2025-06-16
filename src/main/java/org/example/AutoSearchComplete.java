@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class AutoSearchComplete {
     private final TrieNode root;
@@ -18,8 +19,7 @@ public class AutoSearchComplete {
     }
 
     public List<Element> fetchRelatedKey(String sentence) {
-        List<Element> result = trieNodeService.fetchRelatedKey(sentence, root);
-        return result.stream().limit(k).toList();
+        return trieNodeService.getTopKSuggestions(sentence, root, k);
     }
 
 
